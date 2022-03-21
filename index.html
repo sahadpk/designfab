@@ -68,15 +68,24 @@
       </nav><!-- .navbar -->
     
     </div>
-  </header><!-- End Header -->/
+  </header><!-- End Header -->
 
-  
+  <div class="whatsapp-msg-sticky">
+    <a class="ph-icon"  href="tel:(+91)9946097245"><i class="i bi-phone d-flex align-items-center" ></i> </a>
+        
+    <br><br>
+    <a target="blank" href="https://api.whatsapp.com/send/?phone=%2B919946097245&text=Hi%2C+I+would+like+to+enquire+about+services+offered+at+design fab%21&app_absent=0"> <img class="wp-icon"
+        src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt=""> </a>
+  </div>
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
       <div class="row">
         <div class="col-lg-8">
           <h1>Welcome to <span>DESIGN FAB</span></h1>
-          <button type="button" class="btn btn-primary">Call us</button>
+          <a href="tel:+919946097245">
+            <button type="button" class="btn btn-primary">Call us</button>
+          </a>
+          
           <h2>Delivering  great  interior designs since 2006</h2>
 
         </div>
@@ -419,7 +428,8 @@
 
                 <div class="col-lg-8 mt-5 mt-lg-0">
 
-                  <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                  <p id="notification-message"><b></b></p>
+                  <form  id="contact-form" role="form" class="php-email-form">
                     <div class="row">
                       <div class="col-md-6 form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -467,13 +477,13 @@
                 near santhigiri,Edathala North Post,Aluva,Kochi<br><br>
                 <strong>Phone:</strong> 9946097245<br>
               </p>
-              <div class="social-links mt-3">
+              <!-- <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://instagram.com/cafe_fills?utm_medium=copy_link" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -522,6 +532,45 @@
 
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/js/main.js"></script>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('trFTFDDGOVVrt8gmP');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                // these IDs from the previous steps
+                emailjs.sendForm('service_duicp17', 'template_y0gjk74', this)
+                    .then(function() {
+        
+                        let element = document.getElementById('notification-message');
+                        element.classList.add('text-success');
+                        element.innerText="Message Sented Successfully";
+                        document.getElementById('contact-form').reset();
+                        setTimeout(() => {
+                           element.innerText="";
+                          element.classList.remove('text-success');
+                        }, 4000);
+
+                    }, function(error) {
+                      let element = document.getElementById('notification-message');
+                        element.classList.add('text-danger');
+                     element.innerText="Failed";
+                     setTimeout(() => {
+                           element.innerText="";
+                          element.classList.remove('text-danger');
+                        }, 4000);
+                    });
+            });
+        }
+    </script>
 
 </body>
 

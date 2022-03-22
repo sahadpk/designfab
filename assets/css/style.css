@@ -1523,7 +1523,7 @@ section {
   position: fixed;
   z-index: 4000;
   margin-top: 50vh;
-  right:30px;
+  left:30px;
   text-align: end;
   float: right;
 }
@@ -1531,6 +1531,7 @@ section {
   height: 50px;
   width: 50px;
   cursor: pointer;
+  
  
 }
 .ph-icon{
@@ -1538,6 +1539,7 @@ section {
   font-size: 33px;
   color: #0052a5;
   cursor: pointer;
+
 
  
 }
